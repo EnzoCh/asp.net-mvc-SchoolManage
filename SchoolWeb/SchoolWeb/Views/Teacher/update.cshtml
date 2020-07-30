@@ -1,0 +1,135 @@
+﻿@model SchoolWeb.Models.Staff
+@{
+    Layout = null;
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<meta charset="UTF-8">
+@*地址插件*@
+<link rel="stylesheet" href="~/scripts/style.css" />
+
+@*关闭子页面 父页面刷新*@
+<script type="text/javascript">
+    window.onunload = onbeforeunload_handler;
+    function onbeforeunload_handler() {
+        window.opener.location.href = window.opener.location.href;
+
+    }
+</script>
+
+
+
+<style>
+    .text {
+        margin-left: -30px;
+    }
+</style>
+
+@using (Html.BeginForm())
+{
+    <h1 style="text-align:center;margin-top:20px;">查看教师信息</h1>
+    <div class="form-horizontal" style="margin-top:30px;">
+        <div class="row">
+            @Html.Label("姓名", htmlAttributes: new { @class = "control-label col-xs-2", @style = "margin-left:20px;" })
+            <div class="col-xs-4 text">
+                @Html.EditorFor(model => model.Sta_Name, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off", @placeholder = "必填" } })
+                @Html.ValidationMessageFor(model => model.Sta_Name, "", new { @class = "text-danger", @autocomplete = "off", @placeholder = "必填" })
+            </div>
+            @Html.Label("性别", htmlAttributes: new { @class = "control-label col-xs-2" })
+            <div class="col-xs-4 text">
+                @Html.DropDownListFor(Model => Model.Sta_Sex, ViewData["Sex"] as List<SelectListItem>, new { @class = "form-control" })
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            @Html.Label("编码", htmlAttributes: new { @class = "control-label col-xs-2 ", @style = "margin-left:20px;" })
+            <div class="col-xs-4 text">
+                @Html.EditorFor(model => model.Sta_No, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off", @readonly = "true" } })
+                @Html.ValidationMessageFor(model => model.Sta_No, "", new { @class = "text-danger", @autocomplete = "off", @readonly = "true" })
+            </div>
+            @Html.Label("职称", htmlAttributes: new { @class = "control-label col-xs-2" })
+            <div class="col-xs-4 text">
+                @Html.DropDownListFor(Model => Model.Sta_Type, ViewData["ColMan"] as List<SelectListItem>, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <br />
+        <div class="row">
+            @Html.Label("生日", htmlAttributes: new { @class = "control-label col-xs-2", @style = "margin-left:20px;" })
+            <div class="col-xs-4 text">
+                <input type="text" id="test3" name="Sta_Birthday" value="@Html.FormatValue(Model.Sta_Birthday, "{0:yyyy-MM-dd}")" autocomplete="off" class="form-control demo-input" placeholder="必填">
+            </div>
+            @Html.Label("入职时间", htmlAttributes: new { @class = "control-label col-xs-2 " })
+            <div class="col-xs-4 text">
+                <input type="text" id="test4" name="Sta_Indate" value="@Html.FormatValue(Model.Sta_Indate, "{0:yyyy-MM-dd}")" autocomplete="off" class="form-control demo-input" placeholder="必填">
+            </div>
+        </div>
+        <br />
+
+        <div class="row">
+            @Html.Label("电话", htmlAttributes: new { @class = "control-label col-xs-2", @style = "margin-left:20px;" })
+            <div class="col-xs-4 text">
+                @Html.EditorFor(model => model.Sta_Telephone, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off", @placeholder = "必填" } })
+                @Html.ValidationMessageFor(model => model.Sta_Telephone, "", new { @class = "text-danger", @autocomplete = "off", @placeholder = "必填" })
+            </div>
+            @Html.Label("QQ", htmlAttributes: new { @class = "control-label col-xs-2" })
+            <div class="col-xs-4 text">
+                @Html.EditorFor(model => model.Sta_QQ, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off", @placeholder = "选填" } })
+                @Html.ValidationMessageFor(model => model.Sta_QQ, "", new { @class = "text-danger", @autocomplete = "off", @placeholder = "选填" })
+            </div>
+        </div>
+        <br />
+
+        <div class="row">
+            @Html.Label("地址", htmlAttributes: new { @class = "control-label col-xs-2 ", @style = "margin-left:20px;" })
+            <div class="col-xs-4 text">
+                <input type="text" class="select-value" name="Sta_Address" value="@Model.Sta_Address" style="width:175px;" placeholder="必填">
+            </div>
+            @Html.Label("Email", htmlAttributes: new { @class = "control-label col-xs-2" })
+            <div class="col-xs-4 text">
+                @Html.EditorFor(model => model.Sta_Email, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off", @placeholder = "选填" } })
+                @Html.ValidationMessageFor(model => model.Sta_Email, "", new { @class = "text-danger", @autocomplete = "off", @placeholder = "选填" })
+            </div>
+        </div>
+        <br />
+
+        <div class="row">
+            @Html.Label("备注", htmlAttributes: new { @class = "control-label col-xs-2", @style = "margin-left:20px;" })
+            <div class="col-xs-4 text">
+                @Html.EditorFor(model => model.Remark, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off" } })
+                @Html.ValidationMessageFor(model => model.Remark, "", new { @class = "text-danger", @autocomplete = "off" })
+            </div>
+        </div>
+
+        <br />
+
+        <div class="form-group" style="margin-left:80px;">
+            <div class="col-md-offset-2 col-md-10">
+                @*<button type="submit" class="btn btn-success" style="margin-left:100px;">修&nbsp;改</button>*@
+                @*<button type="submit" class="btn btn-warning" style="margin-left:140px;">清&nbsp;空</button>*@
+            </div>
+        </div>
+    </div>
+}
+@*地址插件*@
+<script src="~/scripts/jquery.min.js"></script>
+<script src="~/scripts/index.js"></script>
+
+@*日期与时间组件*@
+<script src="~/laydate/laydate.js"></script>
+<script>
+    lay('#version').html('-v' + laydate.v);
+    //执行一个laydate实例
+    laydate.render({
+        elem: '#test3' //指定元素
+    });
+
+    //执行一个laydate实例
+    laydate.render({
+        elem: '#test4' //指定元素
+    });
+</script>
+
+
+
+

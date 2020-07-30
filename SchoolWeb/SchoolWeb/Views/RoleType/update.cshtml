@@ -1,0 +1,155 @@
+﻿@model SchoolWeb.Models.LoginInfo
+
+@{
+    Layout = null;
+}
+
+<link rel="apple-touch-icon" sizes="76x76" href="~/Content/assets/img/apple-icon.png">
+<link rel="icon" type="image/png" sizes="96x96" href="~/Content/assets/img/favicon.png">
+<link href="~/Content/assets/css/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/assets/css/animate.min.css" rel="stylesheet" />
+<link href="~/Content/assets/css/paper-dashboard.css" rel="stylesheet" />
+<link href="~/Content/assets/css/themify-icons.css" rel="stylesheet">
+<link href="~/Content/comment.css" rel="stylesheet">
+<style>
+    #main table {
+        margin-left: 30px;
+    }
+
+    .alignright {
+        text-align: right;
+    }
+</style>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div id="main">
+        <h1 style="text-align:center;">修改角色信息</h1>
+        <br />
+        <hr />@Html.HiddenFor(model => model.L_id)
+        <table border="0" width="400px" height="400px">
+            <tr>
+                <td class="alignright">用户名：</td>
+                <td>
+                    @Html.EditorFor(model => model.LoginName, new { htmlAttributes = new { @class = "form-control border-input" } })
+                    @Html.ValidationMessageFor(model => model.LoginName, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            <tr>
+                <td class="alignright">密码：</td>
+                <td>
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control border-input" } })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            <tr>
+                <td class="alignright">姓名：</td>
+                <td>
+                   @Html.EditorFor(model => model.RealName, new { htmlAttributes = new { @class = "form-control border-input" } })
+                @Html.ValidationMessageFor(model => model.RealName, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            <tr>
+                <td class="alignright">权限：</td>
+                <td>
+                   @Html.DropDownListFor(Model => Model.Type, ViewData["UserType"] as List<SelectListItem>, new { @class = "form-control border-input" })
+                </td>
+            </tr>
+            <tr>
+                <td class="alignright">备注：</td>
+                <td>
+                    @Html.EditorFor(model => model.Remark, new { htmlAttributes = new { @class = "form-control border-input" } })
+                    @Html.ValidationMessageFor(model => model.Remark, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align:center;">
+                    <input type="submit" value="保存" class="btn btn-default" />&nbsp;&nbsp;
+                </td>
+            </tr>
+        </table>
+    </div>
+}
+<script type="text/javascript">
+    window.onunload = onbeforeunload_handler;
+    function onbeforeunload_handler() {
+        window.opener.location.href = window.opener.location.href;
+    }
+    function closewindow() {
+        window.close();
+    }
+</script>
+
+@*@using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>LoginInfo</h4>
+            <hr />
+
+            @Html.HiddenFor(model => model.L_id)
+
+            <table>
+                <tr>
+                    <td>用户名：</td>
+                    <td>
+                    @Html.EditorFor(model => model.LoginName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.LoginName, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            <tr>
+                <td>密码：</td>
+                <td>
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+        <tr>
+            <td>姓名：</td>
+            <td>
+                @Html.EditorFor(model => model.RealName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.RealName, "", new { @class = "text-danger" })
+        </td>
+    </tr>
+
+    <tr>
+        <td>权限：</td>
+        <td>@Html.DropDownListFor(Model => Model.Type, ViewData["UserType"] as List<SelectListItem>, new { @class = "form-control" })</td>
+    </tr>
+    <tr>
+        <td>备注：</td>
+        <td>
+            @Html.EditorFor(model => model.Remark, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Remark, "", new { @class = "text-danger" })
+    </td>
+    </tr>
+    </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="保存" class="btn btn-default" />
+        </div>
+    </div>
+    </div>
+    }
+
+    <div>
+        @Html.ActionLink("返回", "Index")
+    </div>
+*@

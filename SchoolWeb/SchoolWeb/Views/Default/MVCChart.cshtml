@@ -1,0 +1,28 @@
+﻿
+@{
+    Layout = null;
+    ViewBag.Title = "MVCChart";
+}
+<script type="text/javascript">
+    $(function () {
+        loadChart();
+    })
+
+    function loadChart() {
+        $("#zhu").load("/Report/ChartView");
+    }
+</script>
+<div id="zhu" style="width:100%"></div>
+
+<h1>成绩报表</h1>
+
+@{
+    ViewBag.Title = "ZhuView";
+}
+<table style="width: 100%">
+    <tr>
+        <td>
+            <img src="@Url.Action("ZhuChart",new { Cou_No = ViewData["Cou_No"], Cou_Name=ViewData["Cou_Name"] })" alt="柱状图" />
+        </td>
+    </tr>
+</table>

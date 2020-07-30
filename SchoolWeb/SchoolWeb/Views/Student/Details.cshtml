@@ -1,0 +1,220 @@
+﻿@model SchoolWeb.Models.Student
+
+@{
+    ViewBag.Title = "学生信息详情";
+    Layout =null;
+}
+<link rel="apple-touch-icon" sizes="76x76" href="~/Content/assets/img/apple-icon.png">
+<link rel="icon" type="image/png" sizes="96x96" href="~/Content/assets/img/favicon.png">
+<link href="~/Content/assets/css/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/assets/css/animate.min.css" rel="stylesheet" />
+<link href="~/Content/assets/css/paper-dashboard.css" rel="stylesheet" />
+<link href="~/Content/assets/css/themify-icons.css" rel="stylesheet">
+<link href="~/Content/comment.css" rel="stylesheet">
+<style>
+    #main table {
+        margin-left: 30px;
+    }
+
+    .alignright {
+        text-align: right;
+    }
+</style>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div id="main">
+        <h1 style="text-align:center;"> 学生信息详情</h1>
+        <br />
+        <hr />
+        <table border="0" width="400px" height="600px">
+            <tr>
+                <td class="alignright">序号：</td>
+                <td>
+                    @Html.EditorFor(model => model.S_id, new { htmlAttributes = new { @class = "form-control border-input" } })
+                </td>
+            </tr>
+            <tr>
+                <td class="alignright">姓名：</td>
+                <td>
+                    @Html.EditorFor(model => model.S_Name, new { htmlAttributes = new { @class = "form-control border-input" } })
+                </td>
+            </tr>
+            <tr>
+                <td class="alignright">性别：</td>
+                <td>
+                    @Html.EditorFor(model => model.S_Sex, new { htmlAttributes = new { @class = "form-control border-input" } })
+                </td>
+            </tr>
+            <tr>
+                <td class="alignright">出生日期：</td>
+                <td>
+                    @Html.EditorFor(model => model.S_Birthday, new { htmlAttributes = new { @class = "form-control border-input" } })
+                </td>
+            </tr>
+            <tr>
+                <td class="alignright">联系电话：</td>
+                <td>
+                    @Html.EditorFor(model => model.S_Telephone, new { htmlAttributes = new { @class = "form-control border-input" } })
+                </td>
+            </tr>
+            <tr>
+                <td class="alignright">班级号：</td>
+                <td>
+                    @Html.EditorFor(model => model.S_ClassNo, new { htmlAttributes = new { @class = "form-control border-input" } })
+                </td>
+            </tr>
+            <tr>
+                <td class="alignright">QQ：</td>
+                <td>
+                    @Html.EditorFor(model => model.S_QQ, new { htmlAttributes = new { @class = "form-control border-input" } })
+                </td>
+            </tr>
+            <tr>
+                <td class="alignright">家庭地址：</td>
+                <td>
+                    @Html.EditorFor(model => model.S_Address, new { htmlAttributes = new { @class = "form-control border-input" } })
+                </td>
+            </tr>
+            <tr>
+                <td class="alignright">进校日期：</td>
+                <td>
+                    @Html.EditorFor(model => model.S_Indate, new { htmlAttributes = new { @class = "form-control border-input" } })
+                </td>
+            </tr>
+            <tr>
+                <td class="alignright">邮箱：</td>
+                <td>
+                    @Html.EditorFor(model => model.S_Email, new { htmlAttributes = new { @class = "form-control border-input" } })
+                </td>
+            </tr>
+            <tr>
+                <td class="alignright">是否删除：</td>
+                <td>
+                    @Html.EditorFor(model => model.IsDel, new { htmlAttributes = new { @class = "form-control border-input" } })
+                </td>
+            </tr>
+            <tr>
+                <td class="alignright">备注：</td>
+                <td>
+                    @Html.EditorFor(model => model.Remark, new { htmlAttributes = new { @class = "form-control border-input" } })
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align:center;">
+                    @Html.ActionLink("编辑", "Edit", new { id = Model.S_No }, new { @class = "btn btn-info" })&nbsp;&nbsp;&nbsp;
+                    @Html.ActionLink("返回", "Index")
+                </td>
+            </tr>
+        </table>
+    </div>
+}
+@*<div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3><i class="glyphicon glyphicon-list-alt"></i>学生信息详情</h3>
+            </div>
+            <div class="panel-body">
+                <dl class="dl-horizontal">
+                    <dt> 序号:</dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.S_id)
+                    </dd>
+                    <dt>
+                        姓名:
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.S_Name)
+                    </dd>
+
+                    <dt>
+                        性别:
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.S_Sex)
+                    </dd>
+
+                    <dt>
+                        出生日期:
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.S_Birthday)
+                    </dd>
+
+                    <dt>
+                        班级号:
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.S_ClassNo)
+                    </dd>
+
+                    <dt>
+                        联系方式:
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.S_Telephone)
+                    </dd>
+
+                    <dt>
+                        QQ:
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.S_QQ)
+                    </dd>
+
+                    <dt>
+                        家庭地址:
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.S_Address)
+                    </dd>
+
+                    <dt>
+                        进校日期:
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.S_Indate)
+                    </dd>
+
+                    <dt>
+                        邮箱:
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.S_Email)
+                    </dd>
+
+                    <dt>
+                        是否删除:
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.IsDel)
+                    </dd>
+
+                    <dt>
+                        备注:
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Remark)
+                    </dd>
+                </dl>
+            </div>
+            <div class="panel-footer">
+                <p>
+                    @Html.ActionLink("编辑", "Edit", new { id = Model.S_No }, new { @class = "btn btn-info glyphicon glyphicon-pencil" })
+                    @Html.ActionLink("返回", "Index")
+                </p>
+            </div>
+        </div>
+    </div>
+*@

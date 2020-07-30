@@ -1,0 +1,125 @@
+﻿@model SchoolWeb.Models.Staff
+@{
+    Layout = null;
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<meta charset="UTF-8">
+@*地址插件*@
+<link rel="stylesheet" href="~/scripts/style.css" />
+
+@*关闭子页面 父页面刷新*@
+<script type="text/javascript">
+    window.onunload = onbeforeunload_handler;
+    function onbeforeunload_handler() {
+        window.opener.location.href = window.opener.location.href;
+    }
+</script>
+
+<style>
+    .text {
+        margin-left: -30px;
+    }
+</style>
+
+
+@using (Html.BeginForm())
+{
+    <h1 style="text-align:center;margin-top:20px;">新增教师信息</h1>
+    <div class="form-horizontal" style="margin-top:30px;">
+        <div class="row">
+            @Html.Label("姓名", htmlAttributes: new { @class = "control-label col-xs-2", @style = "margin-left:20px;" })
+            <div class="col-xs-4 text">
+                @Html.EditorFor(model => model.Sta_Name, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off", @placeholder = "必填" } })
+                @Html.ValidationMessageFor(model => model.Sta_Name, "", new { @class = "text-danger", @autocomplete = "off", @placeholder = "必填" })
+            </div>
+            @Html.Label("性别", htmlAttributes: new { @class = "control-label col-xs-2" })
+            <div class="col-xs-4 text">
+                @Html.DropDownList("Sex", null, new { @class = "from-control", @style = "width:100px;height:25px;" })
+            </div>
+        </div>
+        <br />
+
+        <div class="row">
+            @Html.Label("生日", htmlAttributes: new { @class = "control-label col-xs-2", @style = "margin-left:20px;" })
+            <div class="col-xs-4 text">
+                <input type="text" id="test1" name="Sta_Birthday" autocomplete="off" class="form-control demo-input" placeholder="必填" value=@Html.FormatValue(ViewBag.SessionBirthday, "{0:yyyy-MM-dd}")>
+            </div>
+            @Html.Label("入职时间", htmlAttributes: new { @class = "control-label col-xs-2 " })
+            <div class="col-xs-4 text">
+                <input type="text" id="test2" name="Sta_Indate" autocomplete="off" class="form-control demo-input " placeholder="必填" value=@Html.FormatValue(ViewBag.SessionIndate, "{0:yyyy-MM-dd}")>
+            </div>
+        </div>
+        <br />
+
+        <div class="row">
+            @Html.Label("电话", htmlAttributes: new { @class = "control-label col-xs-2", @style = "margin-left:20px;" })
+            <div class="col-xs-4 text">
+                @Html.EditorFor(model => model.Sta_Telephone, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off", @placeholder = "必填" } })
+                @Html.ValidationMessageFor(model => model.Sta_Telephone, "", new { @class = "text-danger", @autocomplete = "off", @placeholder = "必填" })
+            </div>
+            @Html.Label("QQ", htmlAttributes: new { @class = "control-label col-xs-2" })
+            <div class="col-xs-4 text">
+                @Html.EditorFor(model => model.Sta_QQ, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off", @placeholder = "选填" } })
+                @Html.ValidationMessageFor(model => model.Sta_QQ, "", new { @class = "text-danger", @autocomplete = "off", @placeholder = "选填" })
+            </div>
+        </div>
+        <br />
+
+        <div class="row">
+            @Html.Label("地址", htmlAttributes: new { @class = "control-label col-xs-2 ", @style = "margin-left:20px;" })
+            <div class="col-xs-4 text">
+                <input type="text" class="select-value " value=@ViewBag.SessionAddress name="Sta_Address" style="width:175px;" placeholder="必填">
+            </div>
+            @Html.Label("职称", htmlAttributes: new { @class = "control-label col-xs-2" })
+            <div class="col-xs-4 text">
+                @Html.DropDownList("ColMan", null, new { @class = "from-control ", @style = "width:100px;height:25px;" })
+            </div>
+        </div>
+        <br />
+
+        <div class="row">
+            @Html.Label("Email", htmlAttributes: new { @class = "control-label col-xs-2", @style = "margin-left:20px;" })
+            <div class="col-xs-4 text">
+                @Html.EditorFor(model => model.Sta_Email, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off", @placeholder = "选填" } })
+                @Html.ValidationMessageFor(model => model.Sta_Email, "", new { @class = "text-danger", @autocomplete = "off", @placeholder = "选填" })
+            </div>
+            @Html.Label("备注", htmlAttributes: new { @class = "control-label col-xs-2" })
+            <div class="col-xs-4 text">
+                @Html.EditorFor(model => model.Remark, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off", @placeholder = "选填" } })
+                @Html.ValidationMessageFor(model => model.Remark, "", new { @class = "text-danger", @autocomplete = "off", @placeholder = "选填" })
+            </div>
+        </div>
+        <br />
+
+        <div class="form-group" style="margin-left:80px;">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" class="btn btn-success" style="margin-left:170px;">新&nbsp;增</button>
+                @*<button type="submit" class="btn btn-warning" style="margin-left:140px;">清&nbsp;空</button>*@
+            </div>
+        </div>
+    </div>
+}
+@*地址插件*@
+<script src="~/scripts/jquery.min.js"></script>
+<script src="~/scripts/index.js"></script>
+
+@*日期与时间组件*@
+<script src="~/laydate/laydate.js"></script>
+<script>
+    lay('#version').html('-v' + laydate.v);
+    //执行一个laydate实例
+    laydate.render({
+        elem: '#test1' //指定元素
+    });
+
+    //执行一个laydate实例
+    laydate.render({
+        elem: '#test2' //指定元素
+    });
+</script>
+
+
+
+
+

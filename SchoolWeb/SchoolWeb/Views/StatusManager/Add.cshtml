@@ -1,0 +1,149 @@
+﻿@model SchoolWeb.Models.Status
+
+@{
+    ViewBag.Title = "Add";
+    Layout = null;
+}
+
+<link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<script src="~/Scripts/modernizr-2.6.2.js"></script>
+<style>
+    .picone {
+        width: 190px;
+        height: 186px;
+        margin-top: -65px;
+    }
+</style>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div style="width:800px; height:850px;background-image:url(../images/11.jpg) ">
+        <div style="width:90%;background-image:url(../images/11.jpg); height:30px; text-align:center;margin-left:40px;"><b>学&nbsp;&nbsp;生&nbsp;&nbsp;学&nbsp;&nbsp;籍&nbsp;&nbsp;信&nbsp;&nbsp;息</b></div>
+
+        <div style="float:right;height:186px;width:190px;text-align:right; padding-top:65px;margin-right:28px; border:1px solid #DDDDDD; ">
+            <!-- 图片位置-->
+
+
+        </div>
+
+        <div style="float:left;width:69%; text-align:center;">
+
+            <table class="table table-bordered table-striped" style="margin-left:30px;border:1px solid black;">
+
+
+                <tr>
+                    <td>姓名</td>
+                    <td>性别</td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DropDownList("StuNo", null, new { @class = "form-control" })
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => model.Sex, new { htmlAttributes = new { @class = "form-control", @placeholder = "例：男" } })
+                        @Html.ValidationMessageFor(model => model.Sex, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>身份证号</td>
+                    <td>政治面貌</td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.EditorFor(model => model.IdCard, new { htmlAttributes = new { @class = "form-control", @placeholder = "例：51xxxxxxxx" } })
+                        @Html.ValidationMessageFor(model => model.IdCard, "", new { @class = "text-danger" })
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => model.LandScape, new { htmlAttributes = new { @class = "form-control", @placeholder = "例：共青团员" } })
+                        @Html.ValidationMessageFor(model => model.LandScape, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>联系人</td>
+                    <td>联系地址</td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.EditorFor(model => model.ContactPerson, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ContactPerson, "", new { @class = "text-danger" })
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => model.ContactAddress, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ContactAddress, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>联系电话</td>
+                    <td>考生类别</td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.EditorFor(model => model.ContactNumber, new { htmlAttributes = new { @class = "form-control", @placeholder = "例：136xxxxxxxxx" } })
+                        @Html.ValidationMessageFor(model => model.ContactNumber, "", new { @class = "text-danger" })
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => model.Type, new { htmlAttributes = new { @class = "form-control", @placeholder = "例：城镇应届" } })
+                        @Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>生源省份</td>
+                    <td>入学年份</td>
+                </tr>
+                <tr>
+                    <td>
+
+                        @Html.EditorFor(model => model.Province, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Province, "", new { @class = "text-danger" })
+                    </td>
+                    <td>
+                        <input type="text" id="test3" name="Year" autocomplete="off" class="form-control demo-input ">
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>入学方式</td>
+                    <td>备注</td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.EditorFor(model => model.ModeAdmission, new { htmlAttributes = new { @class = "form-control", @placeholder = "例：普通入学" } })
+                        @Html.ValidationMessageFor(model => model.ModeAdmission, "", new { @class = "text-danger" })
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => model.Reamrk, new { htmlAttributes = new { @class = "form-control", @placeholder = "*除此项外必填*" } })
+                        @Html.ValidationMessageFor(model => model.Reamrk, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+
+            </table>
+
+            <div style="width:100%;margin-top:200px;margin-left:130px; " align="center">
+                <div style="width:100%; text-align:center;"> <input type="submit" value="新 增" class="btn btn-success" /></div>
+            </div>
+
+        </div>
+
+
+
+    </div>
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+}
+@*日期与时间组件*@
+<script src="~/laydate/laydate.js"></script>
+<script>
+    lay('#version').html('-v' + laydate.v);
+    //执行一个laydate实例
+    laydate.render({
+        elem: '#test3' //指定元素
+    });
+
+    //执行一个laydate实例
+    laydate.render({
+        elem: '#test4' //指定元素
+    });
+</script>

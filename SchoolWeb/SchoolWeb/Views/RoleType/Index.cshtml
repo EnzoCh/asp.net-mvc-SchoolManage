@@ -1,0 +1,463 @@
+﻿
+@{
+    Layout = null;
+    ViewBag.Title = "Index";
+}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="~/Content/css/htmleaf-demo.css"><!--演示页面样式，使用时可以不引用-->
+<link href="~/Content/css/popupwindow.css" rel="stylesheet" type="text/css">
+<link rel="apple-touch-icon" sizes="76x76" href="~/Content/assets/img/apple-icon.png">
+<link rel="icon" type="image/png" sizes="96x96" href="~/Content/assets/img/favicon.png">
+<link href="~/Content/assets/css/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/assets/css/animate.min.css" rel="stylesheet" />
+<link href="~/Content/assets/css/paper-dashboard.css" rel="stylesheet" />
+<link href="~/Content/assets/css/themify-icons.css" rel="stylesheet">
+<link href="~/Content/comment.css" rel="stylesheet">
+<script>
+    function showAddo() {
+        window.open("Add", "targetname");
+    }
+
+    //学生列表改变时
+    function cd() {
+        if (document.getElementById("stuname").value!="0") {
+            document.getElementById("teaname").disabled = "disabled";
+            document.getElementById("RealName").disabled = "disabled";
+            document.getElementById("RealName").value = null;
+        }
+        else {
+            document.getElementById("teaname").disabled = "";
+            document.getElementById("RealName").disabled = "";
+        }
+
+
+    }
+    //老师列表改变时
+    function cdl() {
+
+        //document.getElementById("stuname").disabled = "disabled";
+        if (document.getElementById("teaname").value != "0") {
+            document.getElementById("stuname").disabled = "disabled";
+            document.getElementById("RealName").disabled = "disabled";
+            document.getElementById("RealName").value = null;
+        }
+        else {
+            document.getElementById("stuname").disabled = "";
+            document.getElementById("RealName").disabled = "";
+        }
+    }
+
+    //管理员列表改变时
+    function cdll() {
+        if (document.getElementById("RealName").value!=null) {
+            document.getElementById("stuname").disabled = "disabled";
+            document.getElementById("teaname").disabled = "disabled";
+        }
+        else {
+            document.getElementById("stuname").disabled = "";
+            document.getElementById("teaname").disabled = "";
+        }
+    }
+
+    function qingkong() {
+
+        //document.getElementById("LoginName").value = null;
+        //document.getElementById("Password").value = null;
+        //document.getElementById("RealName").value = null;
+        //document.getElementById("stuname").value = "0";
+        //document.getElementById("teaname").value = "0";
+        //document.getElementById("Remark").value = null;
+        location.reload();
+    }
+</script>
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div id="mian">
+                    <div id="title">
+                        <h1>角色管理</h1>
+                    </div>
+                    @using (Html.BeginForm())
+                    {
+
+                        <div id="search">
+                            <div id="searchbox">@Html.TextBox("userInfo", null, new { @class = "form-control border-input" })</div>
+                            <div id="searchbut">&nbsp;&nbsp;&nbsp;<input type="submit" value="搜 索" class="btn btn-info" />&nbsp;&nbsp;<button type="button" id="demo-2_button1" class="btn btn-info">添加角色信息<span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button></div>
+                        </div>
+                    }
+                </div>
+                <div class="content table-responsive table-full-width cont">
+                    <table class="table table-striped" id="sampleTableA">
+                        <thead>
+                            <tr>
+                                <th>
+                                    ID
+                                </th>
+                                <th>
+                                    用户名
+                                </th>
+                                <th>
+                                    姓名
+                                </th>
+                                <th>
+                                    密码
+                                </th>
+                                <th>
+                                    权限
+                                </th>
+                                <th>
+                                    创建时间
+                                </th>
+                                <th>
+                                    备注
+                                </th>
+                                <th>
+                                    操作
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (ViewBag.Data != null)
+                            {
+                                for (int i = 0; i < ViewBag.Data.Count; i++)
+                                {
+                                    <tr>
+                                        <td>
+                                            @ViewBag.Data[i].ID
+                                        </td>
+                                        <td>
+                                            @ViewBag.Data[i].LoginName
+                                        </td>
+                                        <td>
+                                            @ViewBag.Data[i].RealName
+                                        </td>
+                                        <td>
+                                            @ViewBag.Data[i].Password
+                                        </td>
+
+                                        <td>
+                                            @ViewBag.Data[i].Type
+                                        </td>
+                                        <td>
+                                            @ViewBag.Data[i].CreateTime
+                                        </td>
+                                        <td>
+                                            @ViewBag.Data[i].Remark
+                                        </td>
+                                        <td>
+
+                                            <a href="javascript:window.open('update?id=@ViewBag.Data[i].ID','updateInfo','width=500,height=600,top=200,left=500');">修改</a>
+                                            @Html.ActionLink("删除", "delete", new { id = ViewBag.Data[i].ID }, new { onclick = "confirm('你确认删除吗？')" })
+
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div id="demo-2_first" class="example_content">
+    @using (Html.BeginForm("add", "RoleType", FormMethod.Post))
+            {
+        <table class="table">
+            <tr>
+                <td>用户名：</td>
+                <td>@Html.TextBox("LoginName", null, new { @class = "form-control" })</td>
+            </tr>
+            <tr>
+                <td>密码：</td>
+                <td>@Html.TextBox("Password", null, new { @class = "form-control" })</td>
+            </tr>
+            <tr>
+                <td>管理员姓名：</td>
+                <td>@Html.TextBox("RealName", null, new { @class = "form-control", onchange = "cdll()" })</td>
+            </tr>
+
+            <tr>
+                <td>学生姓名：</td>
+                <td>@Html.DropDownList("StuName", null, new { id = "stuname", @class = "form-control", onchange = "cd()" })</td>
+            </tr>
+            <tr>
+                <td>教师姓名：</td>
+                <td>@Html.DropDownList("TeaName", null, new { id = "teaname", @class = "form-control", onchange = "cdl()" })</td>
+            </tr>
+            <tr>
+                <td>角色：</td>
+                <td>@Html.DropDownList("UserType", null, new { @class = "form-control" })</td>
+            </tr>
+            <tr>
+                <td>备注：</td>
+                <td>@Html.TextBox("Remark", null, new { @class = "form-control" })</td>
+
+            </tr>
+        </table>
+            <input type="submit" value="新 增" class="btn btn-success" />
+            <input type="button" value="重 置" class="btn btn-info" onclick="qingkong()" />
+          
+    }
+</div>
+
+
+
+
+<script src="../../Content/js/jquery-1.11.0.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/js.geotools/dist/geotools.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/js.geotools/dist/geotools-swedish-zipcodes.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.24.0/moment.min.js"></script>
+<script src="../../Content/src/fancyTable.js"></script>
+<script src="../../Content/js/popupwindow.min.js"></script>
+<script type="text/javascript">
+    var Demo = (function ($, undefined) {
+
+        $(function () {
+            example2();
+        });
+        function example2() {
+            $("#demo-2_first").PopupWindow({
+                title: "新  增",
+                modal: true,
+                autoOpen: false,
+                height: 600,
+                width: 400,
+                top: 100,
+                left: 300
+            });
+            $("#demo-2_first").on("close.popupwindow", function (event) {
+                $("#demo-2_second").PopupWindow("close");
+                $("#demo-2_third").PopupWindow("close");
+            });
+            $("#demo-2_button1").on("click", function (event) {
+                $("#demo-2_first").PopupWindow("open");
+            });
+        }
+    })(jQuery);
+
+    // Word genarator
+    function rWord(r) { var t, n = "bcdfghjklmnpqrstvwxyz", a = "aeiou", e = function (r) { return Math.floor(Math.random() * r) }, o = ""; r = parseInt(r, 10), n = n.split(""), a = a.split(""); for (t = 0; t < r / 2; t++) { var l = n[e(n.length)], p = a[e(a.length)]; o += 0 === t ? l.toUpperCase() : l, o += 2 * t < r - 1 ? p : "" } return o }
+
+    $(document).ready(function () {
+        // And make them fancy
+        $("#sampleTableA").fancyTable({
+            sortColumn: 0,
+            pagination: true,
+            perPage: 5,
+            globalSearch: true
+        });
+    });
+</script>
+@*<link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <style>
+        .All {
+            background-color: #F5F5F5;
+            height: 550px;
+        }
+
+        .table {
+            background-color: white;
+        }
+
+        .row {
+            top: 100px;
+        }
+
+        .top-right {
+            top: 75px;
+            right: 480px;
+            position: absolute;
+        }
+
+        .btnBlue {
+            width: 100px;
+            height: 30px;
+            background-color: skyblue;
+            border-radius: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .onee {
+            padding-top: 30px;
+        }
+
+        .twwww {
+            position: absolute;
+            left: 600px;
+            top: 60px;
+        }
+
+        #divAll {
+            display: none;
+        }
+
+        #divAddInfo {
+            width: 600px;
+            height: 400px;
+            border: 8px solid gray;
+            position: relative;
+            top: -450px;
+            left: 270px;
+            background-color: white;
+            text-align: center;
+        }
+    </style>
+    <script>
+        function showAdd(stateInfo) {
+            if (stateInfo == 0) {
+                document.getElementById("divAll").style.display = "block";
+            }
+            else {
+                document.getElementById("divAll").style.display = "none";
+            }
+        }
+        function showAddo() {
+            window.open("Add", "targetname");
+        }
+
+    </script>
+    <div class="All">
+        <div class="top">
+
+            <div class="row main">
+                <div class="col-md-2">
+                    <h1>角色管理</h1>
+                </div>
+                @using (Html.BeginForm())
+                {
+                    <div class="twwww"><span>&nbsp; </span>@Html.DropDownList("UserType", null, new { @class = "form-control" })</div>
+                    <div class="onee">
+                        <div class="col-md-4 col-md-offset-3">
+
+                            <div class="input-group search">
+
+                                @Html.TextBox("Index", null, new { @class = "form-control", @placeholder = "请输入用户名" })
+                                <span class="input-group-btn">
+                                    <input type="submit" value="搜 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 索" class="btn btn-default" />
+                                </span>
+
+                            </div>
+                        </div>
+                        <div class="col-md-3 add">
+                            <button type="button" class="btn btn-default" onclick="showAdd(0)">添加角色信息<span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <table class="table table-hover">
+            <tr>
+                <td>
+                    ID
+                </td>
+                <td>
+                    用户名
+                </td>
+                <td>
+                    姓名
+                </td>
+                <td>
+                    密码
+                </td>
+
+                <td>
+                    权限
+                </td>
+                <td>
+                    创建时间
+                </td>
+                <td>
+                    备注
+                </td>
+                <td>
+                    操作
+                </td>
+            </tr>
+            @if (ViewBag.Data != null)
+                {
+                    for (int i = 0; i < ViewBag.Data.Count; i++)
+                    {
+                    <tr>
+                        <td>
+                            @ViewBag.Data[i].ID
+                        </td>
+                        <td>
+                            @ViewBag.Data[i].LoginName
+                        </td>
+                        <td>
+                            @ViewBag.Data[i].RealName
+                        </td>
+                        <td>
+                            @ViewBag.Data[i].Password
+                        </td>
+
+                        <td>
+                            @ViewBag.Data[i].Type
+                        </td>
+                        <td>
+                            @ViewBag.Data[i].CreateTime
+                        </td>
+                        <td>
+                            @ViewBag.Data[i].Remark
+                        </td>
+                        <td>
+
+                            <a href="javascript:window.open('update?id=@ViewBag.Data[i].ID','updateInfo','width=400,height=300,top=200,left=500');">修改</a>
+                            @Html.ActionLink("删除", "delete", new { id = ViewBag.Data[i].ID }, new { onclick = "confirm('你确认删除吗？')" });
+
+                        </td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+
+    <div id="divAll">
+        <div id="divAdd"></div>
+        <div id="divAddInfo">
+            @using (Html.BeginForm("add", "RoleType", FormMethod.Post))
+            {
+                <table class="table">
+                    <tr>
+                        <td>用户名：</td>
+                        <td>@Html.TextBox("LoginName", null, new { @class = "form-control" })</td>
+
+                    </tr>
+                    <tr>
+
+                        <td>密码：</td>
+                        <td>@Html.TextBox("Password", null, new { @class = "form-control" })</td>
+                    </tr>
+                    <tr>
+                        <td>姓名：</td>
+                        <td>@Html.TextBox("RealName", null, new { @class = "form-control" })</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>角色：</td>
+                        <td>@Html.DropDownList("UserType", null, new { @class = "form-control" })</td>
+                    </tr>
+                    <tr>
+                        <td>备注：</td>
+                        <td>@Html.TextBox("Remark", null, new { @class = "form-control" })</td>
+
+                    </tr>
+                </table>
+                <input type="submit" value="新 增" class="btn btn-success" />
+                <input type="button" value="关 闭" class="btn btn-warning" onclick="showAdd(1)" />
+            }
+        </div>
+    </div>*@
+

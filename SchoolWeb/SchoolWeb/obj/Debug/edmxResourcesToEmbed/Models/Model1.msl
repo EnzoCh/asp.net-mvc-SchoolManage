@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SchoolManageModelStoreContainer" CdmEntityContainer="SchoolManageEntities6">
+    <EntitySetMapping Name="ClassInfo">
+      <EntityTypeMapping TypeName="SchoolManageModel.ClassInfo">
+        <MappingFragment StoreEntitySet="ClassInfo">
+          <ScalarProperty Name="Cla_id" ColumnName="Cla_id" />
+          <ScalarProperty Name="Cla_No" ColumnName="Cla_No" />
+          <ScalarProperty Name="Cla_Name" ColumnName="Cla_Name" />
+          <ScalarProperty Name="Cla_CreateTime" ColumnName="Cla_CreateTime" />
+          <ScalarProperty Name="Cla_Man" ColumnName="Cla_Man" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CollegeInfo">
+      <EntityTypeMapping TypeName="SchoolManageModel.CollegeInfo">
+        <MappingFragment StoreEntitySet="CollegeInfo">
+          <ScalarProperty Name="Col_id" ColumnName="Col_id" />
+          <ScalarProperty Name="Col_No" ColumnName="Col_No" />
+          <ScalarProperty Name="Col_Name" ColumnName="Col_Name" />
+          <ScalarProperty Name="Col_CreateTime" ColumnName="Col_CreateTime" />
+          <ScalarProperty Name="Col_Man" ColumnName="Col_Man" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CourseInfo">
+      <EntityTypeMapping TypeName="SchoolManageModel.CourseInfo">
+        <MappingFragment StoreEntitySet="CourseInfo">
+          <ScalarProperty Name="Cou_id" ColumnName="Cou_id" />
+          <ScalarProperty Name="Cou_No" ColumnName="Cou_No" />
+          <ScalarProperty Name="Cou_Name" ColumnName="Cou_Name" />
+          <ScalarProperty Name="Cou_Teacher" ColumnName="Cou_Teacher" />
+          <ScalarProperty Name="Cou_Type" ColumnName="Cou_Type" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ExamInfo">
+      <EntityTypeMapping TypeName="SchoolManageModel.ExamInfo">
+        <MappingFragment StoreEntitySet="ExamInfo">
+          <ScalarProperty Name="Em_id" ColumnName="Em_id" />
+          <ScalarProperty Name="Em_No" ColumnName="Em_No" />
+          <ScalarProperty Name="Em_Name" ColumnName="Em_Name" />
+          <ScalarProperty Name="Em_DateTime" ColumnName="Em_DateTime" />
+          <ScalarProperty Name="Em_Time" ColumnName="Em_Time" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoginInfo">
+      <EntityTypeMapping TypeName="SchoolManageModel.LoginInfo">
+        <MappingFragment StoreEntitySet="LoginInfo">
+          <ScalarProperty Name="L_id" ColumnName="L_id" />
+          <ScalarProperty Name="RealName" ColumnName="RealName" />
+          <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="StaNo" ColumnName="StaNo" />
+          <ScalarProperty Name="StuNo" ColumnName="StuNo" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="L_CreateTime" ColumnName="L_CreateTime" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoginType">
+      <EntityTypeMapping TypeName="SchoolManageModel.LoginType">
+        <MappingFragment StoreEntitySet="LoginType">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Resources">
+      <EntityTypeMapping TypeName="SchoolManageModel.Resources">
+        <MappingFragment StoreEntitySet="Resources">
+          <ScalarProperty Name="Res_id" ColumnName="Res_id" />
+          <ScalarProperty Name="Res_No" ColumnName="Res_No" />
+          <ScalarProperty Name="Res_Name" ColumnName="Res_Name" />
+          <ScalarProperty Name="Res_Parent" ColumnName="Res_Parent" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="IsHide" ColumnName="IsHide" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Score">
+      <EntityTypeMapping TypeName="SchoolManageModel.Score">
+        <MappingFragment StoreEntitySet="Score">
+          <ScalarProperty Name="Sco_id" ColumnName="Sco_id" />
+          <ScalarProperty Name="Sco_StudentNo" ColumnName="Sco_StudentNo" />
+          <ScalarProperty Name="Sco_score" ColumnName="Sco_score" />
+          <ScalarProperty Name="Sco_CourseNo" ColumnName="Sco_CourseNo" />
+          <ScalarProperty Name="Sco_ExamNo" ColumnName="Sco_ExamNo" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SelectCourse">
+      <EntityTypeMapping TypeName="SchoolManageModel.SelectCourse">
+        <MappingFragment StoreEntitySet="SelectCourse">
+          <ScalarProperty Name="SC_id" ColumnName="SC_id" />
+          <ScalarProperty Name="SC_StudentNo" ColumnName="SC_StudentNo" />
+          <ScalarProperty Name="SC_CourseNo" ColumnName="SC_CourseNo" />
+          <ScalarProperty Name="SC_Time" ColumnName="SC_Time" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staff">
+      <EntityTypeMapping TypeName="SchoolManageModel.Staff">
+        <MappingFragment StoreEntitySet="Staff">
+          <ScalarProperty Name="Sta_id" ColumnName="Sta_id" />
+          <ScalarProperty Name="Sta_No" ColumnName="Sta_No" />
+          <ScalarProperty Name="Sta_Name" ColumnName="Sta_Name" />
+          <ScalarProperty Name="Sta_Sex" ColumnName="Sta_Sex" />
+          <ScalarProperty Name="Sta_Birthday" ColumnName="Sta_Birthday" />
+          <ScalarProperty Name="Sta_Type" ColumnName="Sta_Type" />
+          <ScalarProperty Name="Sta_Telephone" ColumnName="Sta_Telephone" />
+          <ScalarProperty Name="Sta_QQ" ColumnName="Sta_QQ" />
+          <ScalarProperty Name="Sta_Address" ColumnName="Sta_Address" />
+          <ScalarProperty Name="Sta_Indate" ColumnName="Sta_Indate" />
+          <ScalarProperty Name="Sta_Email" ColumnName="Sta_Email" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StaffType">
+      <EntityTypeMapping TypeName="SchoolManageModel.StaffType">
+        <MappingFragment StoreEntitySet="StaffType">
+          <ScalarProperty Name="ST_id" ColumnName="ST_id" />
+          <ScalarProperty Name="ST_No" ColumnName="ST_No" />
+          <ScalarProperty Name="ST_Name" ColumnName="ST_Name" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Status">
+      <EntityTypeMapping TypeName="SchoolManageModel.Status">
+        <MappingFragment StoreEntitySet="Status">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="S_No" ColumnName="S_No" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="IdCard" ColumnName="IdCard" />
+          <ScalarProperty Name="LandScape" ColumnName="LandScape" />
+          <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+          <ScalarProperty Name="ContactAddress" ColumnName="ContactAddress" />
+          <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+          <ScalarProperty Name="AdmissionNumber" ColumnName="AdmissionNumber" />
+          <ScalarProperty Name="CandidateNumber" ColumnName="CandidateNumber" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Province" ColumnName="Province" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="ModeAdmission" ColumnName="ModeAdmission" />
+          <ScalarProperty Name="Reamrk" ColumnName="Reamrk" />
+          <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Student">
+      <EntityTypeMapping TypeName="SchoolManageModel.Student">
+        <MappingFragment StoreEntitySet="Student">
+          <ScalarProperty Name="S_id" ColumnName="S_id" />
+          <ScalarProperty Name="S_No" ColumnName="S_No" />
+          <ScalarProperty Name="S_Name" ColumnName="S_Name" />
+          <ScalarProperty Name="S_Sex" ColumnName="S_Sex" />
+          <ScalarProperty Name="S_Birthday" ColumnName="S_Birthday" />
+          <ScalarProperty Name="S_ClassNo" ColumnName="S_ClassNo" />
+          <ScalarProperty Name="S_Telephone" ColumnName="S_Telephone" />
+          <ScalarProperty Name="S_QQ" ColumnName="S_QQ" />
+          <ScalarProperty Name="S_Address" ColumnName="S_Address" />
+          <ScalarProperty Name="S_Indate" ColumnName="S_Indate" />
+          <ScalarProperty Name="S_Email" ColumnName="S_Email" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="SchoolManageModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="SchoolManageModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="SchoolManageModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="SchoolManageModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="SchoolManageModel.Store.sp_helpdiagramdefinition" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="SchoolManageModel.Store.sp_helpdiagrams" />
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="SchoolManageModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="SchoolManageModel.Store.sp_upgraddiagrams" />
+  </EntityContainerMapping>
+</Mapping>

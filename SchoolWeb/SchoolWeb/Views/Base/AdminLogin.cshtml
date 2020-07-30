@@ -1,0 +1,152 @@
+﻿
+@{
+    Layout = null;
+    ViewBag.Title = "AdminLogin";
+}
+<style>
+
+</style>
+<link href="~/Content/style.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js">
+
+</script>
+@using (Html.BeginForm(FormMethod.Post))
+{
+    <body style="background-color:#E5ECF5;">
+        <header>
+            <nav class="b_clear">
+                <div class="nav_logo l_float">
+                    <img src="~/imgs/swzyxylogo.png" alt="" style="float:left;">
+                    <h2 style="float:left; line-height:0px;">&nbsp;&nbsp;教务管理系统</h2>
+                </div>
+                <div class="nav_link r_float">
+                    <ul>
+                        <li><a href="#">返回首页</a></li>
+                        <li><a href="#">关于我们</a></li>
+                        <li><a href="#">联系我们</a></li>
+
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <div class="container">
+            <div class="login_body l_clear">
+                <div class="login_form l_float">
+                    <div class="login_top">
+                        <img src="~/imgs/swzyxylogo.png" alt="" class="" style="float:left;">
+                        <h3 style="float:left; line-height:0px;">&nbsp;&nbsp;教务管理系统</h3>
+                        <div class="login_tags b_clear">
+                            <span class="top_tag l_float active" onClick="PwdLogin()">密码登录</span>
+                            <span class="top_tag r_float" onClick="QrcodeLogin()">扫码登录</span>
+                        </div>
+                    </div>
+                    <div class="login_con">
+                        <form action="" method="POST">
+                            <div class="sdiv">
+                                <label for="user_name">用户名</label><br />
+                                <input type="text" name="loginName" id="user_name" placeholder="账号/手机号/邮箱" class="stt" style="background-color:white;">
+                                <img src="~/imgs/icons/user.svg" class="simg">
+                            </div>
+                            <div class="sdiv">
+                                <label for="user_pwd">密码</label><br />
+                                <input type="password" name="loginPwd" id="user_pwd" placeholder="请输入账户密码" class="stt">
+                                <img src="~/imgs/icons/lock.svg" class="simg">
+                            </div>
+                            <div class="sdiv">
+                                <label for="user_pwd">职位</label><br />
+                                @Html.DropDownList("roletype", null, new { @class = "btn btn-info dropdown-toggle", style = "background-color:#E8F0FE;color:black;width:184px;" })
+
+                            </div>
+                            <div class="b_clear sdiv">
+                                <label for="auth_code" class="b_clear">验证码</label>
+                                <input type="text" name="sCode" id="auth_code" placeholder="输入验证码" class="l_float sscode stt" maxlength="6">
+
+                                <img src="~/Base/SecurityCode" id="yzm" class="sscode" />
+                                <img src="~/imgs/icons/auth_code.svg" class="simg">
+
+                            </div>
+                            <div class="b_clear submit">
+
+                                <button type="submit" class="slog" id="log" onclick="session">登&nbsp;&nbsp;录</button>
+                                <a href="#" class="r_float">忘记密码？</a>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="login_con hidden">
+                        <div class="qr_code">
+                            <img src="~/imgs/ewm.png" alt="网址">
+                            <p>请使用微信扫码登录<br>仅支持已绑定微信的账户进行快速登录</p>
+                        </div>
+
+                    </div>
+                    <div class="login_otherAccount">
+                        <span>第三方登录</span>
+                        <a href="http://"><img src="~/imgs/icons/wechat.svg" alt="微信登录"></a>
+                        <a href="http://"><img src="~/imgs/icons/weibo.svg" alt="微博登录"></a>
+                        <a href=""><img src="~/imgs/icons/qq.svg" alt="QQ登录"></a>
+                    </div>
+
+                </div>
+                <div class="login_ad l_float" id="AdImg">
+                    <a href="">查看详情</a>
+                </div>
+            </div>
+            <div class="footer">
+                <p>Copyright © 2020.7  <a href="#">实训曾梓豪小组</a></p>
+
+                <a href="www.baidu.com" target="_blank"><img src="~/imgs/icons/icp_record_filing.svg" alt="工信部备案">成都ICP备15000557号</a>
+            </div>
+        </div>
+        <script src="~/scripts/login.js"></script>
+    </body>
+
+    <script type="text/javascript">
+        $("#yzm").click(function () {
+
+            //alert("绑定成功");
+
+            $(this).prop("src", "/Base/SecurityCode?t=" + new Date().getTime());
+
+        })
+        $(function () {
+            $("#log").attr("disabled", "true");
+            $("#auth_code").keyup(function () {
+                var leth = $("#auth_code").val().length;
+                if (leth == 5) {
+                    $.ajax({
+                        url: "/Base/GetSession",
+                        type: 'get',
+                        dataType: 'text',
+                        async: false,
+                        success: function (result) {
+                            var incode = $("#auth_code").val();
+                            if (incode != result) {
+                                if (incode == "") {
+                                    alert("验证码不能为空!")
+                                    $("#log").attr("disabled", "true");
+                                    return;
+                                }
+                                alert("验证码不正确");
+                                $("#log").attr("disabled", "true");
+                                return;
+
+                            }
+                            if (incode == result) {
+                                $("#log").removeAttr("disabled");
+                                return;
+                            }
+                        },
+                        error: function () {
+                            alert("获取不到值");
+                        }
+                    })
+
+                }
+            })
+        })
+    </script>
+
+}
+

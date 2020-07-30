@@ -1,0 +1,107 @@
+﻿@model IEnumerable<SchoolWeb.Models.Staff>
+@{
+    Layout = null;
+}
+
+<link rel="apple-touch-icon" sizes="76x76" href="~/Content/assets/img/apple-icon.png">
+<link rel="icon" type="image/png" sizes="96x96" href="~/Content/assets/img/favicon.png">
+<link href="~/Content/assets/css/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/assets/css/animate.min.css" rel="stylesheet" />
+<link href="~/Content/assets/css/paper-dashboard.css" rel="stylesheet" />
+<link href="~/Content/assets/css/themify-icons.css" rel="stylesheet">
+<link href="~/Content/comment.css" rel="stylesheet">
+<script>
+    function showDiv(stateInfo) {
+        if (stateInfo == 0) {
+            window.open('add', '_self ', 'width=600,height=600,top=100,left=500,resizable=no,status=no,menubar=no,scrollbars=no');
+        }
+    }
+</script>
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div id="mian">
+                    <div id="title">
+                        <h1>教师管理</h1>
+                    </div>
+                    @using (Html.BeginForm())
+                    {
+                        <div id="search">
+                            <div id="searchbox"><input type="text" class="text-danger form-control border-input" placeholder="请输入姓名" aria-describedby="basic-addon2" name="name"></div>
+                            <div id="searchbut">&nbsp;&nbsp;&nbsp;<button class="btn btn-info" type="submit">搜索</button>&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-info" onclick="showDiv(0)">添加教师信息<span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button></div>
+                        </div>
+                    }
+                </div>
+                <div class="content table-responsive table-full-width cont">
+                    <table class="table table-striped" id="sampleTableA">
+                        <thead>
+                            <tr>
+                                <th>教师姓名</th>
+                                <th>性别</th>
+                                <th>出生年份</th>
+                                <th>职称</th>
+                                <th>电话号码</th>
+                                <th>QQ</th>
+                                <th>地址</th>
+                                <th>入职年份</th>
+                                <th>Email</th>
+                                <th>备注</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (ViewBag.Data != null)
+                            {
+                                for (int i = 0; i < ViewBag.Data.Count; i++)
+                                {
+                                    <tr>
+                                        <td>@ViewBag.Data[i].StaName</td>
+                                        <td>@ViewBag.Data[i].Sex</td>
+                                        <td>@ViewBag.Data[i].BornDate</td>
+                                        <td>@ViewBag.Data[i].Type</td>
+                                        <td>@ViewBag.Data[i].Phone</td>
+                                        <td>@ViewBag.Data[i].QQ</td>
+                                        <td>@ViewBag.Data[i].Address</td>
+                                        <td>@ViewBag.Data[i].Indate</td>
+                                        <td>@ViewBag.Data[i].Email</td>
+                                        <td>@ViewBag.Data[i].Remark</td>
+                                        <td>
+                                            <a href="javascript:window.open('update?StaNo=@ViewBag.Data[i].StaNo', 'updateInfo', 'width=600,height=600,top=100,left=500,resizable=no,status=no,menubar=no,scrollbars=no');" style="font-size:20px;text-decoration:none;line-height:none;">详细</a>
+                                            @Html.ActionLink("删除", "delete", new { StaNo = ViewBag.Data[i].StaNo }, new { style = "font-size:20px;text-decoration:none;", onclick = "return confirm('确定要删除吗？')" })
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../../Content/js/jquery-1.11.0.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/js.geotools/dist/geotools.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/js.geotools/dist/geotools-swedish-zipcodes.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.24.0/moment.min.js"></script>
+<script src="../../Content/src/fancyTable.js"></script>
+<script type="text/javascript">
+    // Word genarator
+    function rWord(r) { var t, n = "bcdfghjklmnpqrstvwxyz", a = "aeiou", e = function (r) { return Math.floor(Math.random() * r) }, o = ""; r = parseInt(r, 10), n = n.split(""), a = a.split(""); for (t = 0; t < r / 2; t++) { var l = n[e(n.length)], p = a[e(a.length)]; o += 0 === t ? l.toUpperCase() : l, o += 2 * t < r - 1 ? p : "" } return o }
+
+    $(document).ready(function () {
+        // And make them fancy
+        $("#sampleTableA").fancyTable({
+            sortColumn: 0,
+            pagination: true,
+            perPage: 5,
+            globalSearch: true
+        });
+    });
+</script>
+
+

@@ -1,0 +1,69 @@
+﻿@model IEnumerable<SchoolWeb.Models.Score>
+@{
+    Layout = null;
+}
+
+<link rel="apple-touch-icon" sizes="76x76" href="~/Content/assets/img/apple-icon.png">
+<link rel="icon" type="image/png" sizes="96x96" href="~/Content/assets/img/favicon.png">
+<link href="~/Content/assets/css/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/assets/css/animate.min.css" rel="stylesheet" />
+<link href="~/Content/assets/css/paper-dashboard.css" rel="stylesheet" />
+<link href="~/Content/assets/css/themify-icons.css" rel="stylesheet">
+<link href="~/Content/comment.css" rel="stylesheet">
+<style>
+    #main table {
+        margin-left: 30px;
+    }
+
+    .alignright {
+        text-align: right;
+    }
+</style>
+@using (Html.BeginForm())
+{
+    if (ViewBag.Data != null)
+    {
+        @Html.AntiForgeryToken()
+        <div id="main">
+            <h1 style="text-align:center;">添加成绩</h1>
+            <br />
+            <hr />
+
+            <table border="0" width="400px" height="400px">
+                @for (int i = 0; i < ViewBag.Data.Count; i++)
+                {
+                    <tr>
+                        <td class="alignright">学号：</td>
+                        <td>
+                            <input type="text" class="form-control border-input" name="studentNo" readonly="readonly" value=" @ViewBag.Data[i].Sco_StudentNo ">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="alignright">姓名：</td>
+                        <td>
+                            <input type="text" class="form-control border-input" readonly="readonly" value=" @ViewBag.Data[i].Sco_Name ">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="alignright">考试：</td>
+                        <td>
+                            <input type="text" class="form-control border-input" readonly="readonly" value=" @ViewBag.Data[i].Exam_Name ">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="alignright">成绩：</td>
+                        <td>
+                            <input type="text" class="form-control border-input" name="stuscore" placeholder="请输入成绩" value=" @ViewBag.Data[i].Sco_Score ">
+                        </td>
+                    </tr>
+                }
+                <tr>
+                    <td colspan="2" style="text-align:center;">
+                        <button class="btn btn-success" type="submit">提交</button>&nbsp;&nbsp;
+                        @Html.ActionLink("返回", "Index")
+                    </td>
+                </tr>
+            </table>
+        </div>
+    }
+}

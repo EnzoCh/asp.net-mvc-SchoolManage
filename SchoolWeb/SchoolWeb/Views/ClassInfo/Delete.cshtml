@@ -1,0 +1,147 @@
+﻿@model SchoolWeb.Models.ClassInfo
+
+@{
+    ViewBag.Title = "Delete";
+    Layout =null;
+}
+<link rel="apple-touch-icon" sizes="76x76" href="~/Content/assets/img/apple-icon.png">
+<link rel="icon" type="image/png" sizes="96x96" href="~/Content/assets/img/favicon.png">
+<link href="~/Content/assets/css/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/assets/css/animate.min.css" rel="stylesheet" />
+<link href="~/Content/assets/css/paper-dashboard.css" rel="stylesheet" />
+<link href="~/Content/assets/css/themify-icons.css" rel="stylesheet">
+<link href="~/Content/comment.css" rel="stylesheet">
+<style>
+    #main table {
+        margin-left: 30px;
+    }
+
+    .alignright {
+        text-align: right;
+    }
+</style>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div id="main">
+        <h1 style="text-align:center;"> 新增信息班级界面</h1>
+        <br />
+        <hr />
+        <table border="0" width="400px" height="600px">
+            <tr>
+                <td class="alignright"> 序号：</td>
+                <td>
+                    @Html.EditorFor(model => model.Cla_id, new { htmlAttributes = new { @class = "form-control border-input" } })
+                </td>
+            </tr>
+            <tr>
+                <td  class="alignright">班级名称：</td>
+                <td>
+                    @Html.EditorFor(model => model.Cla_Name, new { htmlAttributes = new { @class = "form-control border-input" } })
+                </td>
+            </tr>
+            <tr>
+                <td  class="alignright">创建时间：</td>
+                <td>
+                    @Html.EditorFor(model => model.Cla_CreateTime, new { htmlAttributes = new { @class = "form-control border-input" } })
+                </td>
+            </tr>
+            <tr>
+                <td  class="alignright">班主任：</td>
+                <td>
+                    @Html.EditorFor(model => model.Staff.Sta_Name, new { htmlAttributes = new { @class = "form-control border-input" } })
+                </td>
+            </tr>
+            <tr>
+                <td  class="alignright">是否删除：</td>
+                <td>
+                    @Html.EditorFor(model => model.IsDel, new { htmlAttributes = new { @class = "form-control border-input" } })
+                </td>
+            </tr>
+            <tr>
+                <td  class="alignright">备注：</td>
+                <td>
+                    @Html.EditorFor(model => model.Remark, new { htmlAttributes = new { @class = "form-control border-input" } })
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align:center;">
+                    <input type="submit" value="删除" class="btn btn-danger" /> |
+                    @Html.ActionLink("返回", "Index")
+                </td>
+            </tr>
+        </table>
+    </div>
+}
+
+@*<div class="panel panel-default">
+
+        <div class="panel-heading">
+            <h3><i class="glyphicon glyphicon-exclamation-sign"></i>删除班级信息</h3>
+        </div>
+
+        <div class="panel-body">
+            <dl class="dl-horizontal">
+                <dt>
+                    序号:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Cla_id)
+                </dd>
+
+                <dt>
+                    班级名称:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Cla_Name)
+                </dd>
+
+                <dt>
+                    创建时间:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Cla_CreateTime)
+                </dd>
+
+                <dt>
+                    是否删除:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.IsDel)
+                </dd>
+
+                <dt>
+                    备注:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Remark)
+                </dd>
+
+                <dt>
+                    班主任:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Staff.Sta_Name)
+                </dd>
+
+            </dl>
+        </div>
+        <div class="panel-footer">
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="删除" class="btn btn-danger" /> |
+                    @Html.ActionLink("返回", "Index")
+                </div>
+            }
+        </div>
+    </div>*@

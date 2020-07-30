@@ -1,0 +1,59 @@
+﻿@model SchoolWeb.Models.CollegeInfo
+@{
+    Layout = null;
+}
+
+<link rel="apple-touch-icon" sizes="76x76" href="~/Content/assets/img/apple-icon.png">
+<link rel="icon" type="image/png" sizes="96x96" href="~/Content/assets/img/favicon.png">
+<link href="~/Content/assets/css/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/assets/css/animate.min.css" rel="stylesheet" />
+<link href="~/Content/assets/css/paper-dashboard.css" rel="stylesheet" />
+<link href="~/Content/assets/css/themify-icons.css" rel="stylesheet">
+<link href="~/Content/comment.css" rel="stylesheet">
+<style>
+    #main table {
+        margin-left: 30px;
+    }
+
+    .alignright {
+        text-align: right;
+    }
+</style>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div id="main">
+        <h1 style="text-align:center;">修改课程信息</h1>
+        <br />
+        <hr />
+        <table border="0" width="400px" height="400px">
+            <tr>
+                <td class="alignright">系名：</td>
+                <td>
+                   @Html.EditorFor(model => model.Col_Name, new { htmlAttributes = new { @class = "form-control border-input" } })
+                @Html.ValidationMessageFor(model => model.Col_Name, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            <tr>
+                <td class="alignright">系主任：</td>
+                <td>
+                    @Html.DropDownListFor(Model => Model.Col_Man, ViewData["ColMan"] as List<SelectListItem>, new { @class = "form-control border-input" })
+                </td>
+            </tr>
+            <tr>
+                <td class="alignright">备注:</td>
+                <td>
+                    @Html.EditorFor(model => model.Remark, new { htmlAttributes = new { @class = "form-control border-input" } })
+                    @Html.ValidationMessageFor(model => model.Remark, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align:center;">
+                    <input type="submit" value="保存" class="btn btn-info" />&nbsp;&nbsp;
+                    @Html.ActionLink("返回", "Index")&nbsp;&nbsp;
+                </td>
+            </tr>
+        </table>
+        @Html.HiddenFor(model => model.Col_No)
+    </div>
+}
